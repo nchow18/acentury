@@ -4,11 +4,10 @@ use Url;
 use Html;
 use Lang;
 use Model;
-use Config;
 use Markdown;
 use BackendAuth;
 use Carbon\Carbon;
-use Backend\Models\User as BackendUser;
+use Backend\Models\User;
 use Cms\Classes\Page as CmsPage;
 use Cms\Classes\Theme;
 use Cms\Classes\Controller;
@@ -79,20 +78,20 @@ class Post extends Model
      * Relations
      */
     public $belongsTo = [
-        'user' => BackendUser::class
+        'user' => ['Backend\Models\User']
     ];
 
     public $belongsToMany = [
         'categories' => [
-            Category::class,
+            'RainLab\Blog\Models\Category',
             'table' => 'rainlab_blog_posts_categories',
             'order' => 'name'
         ]
     ];
 
     public $attachMany = [
-        'featured_images' => [\System\Models\File::class, 'order' => 'sort_order'],
-        'content_images'  => \System\Models\File::class
+        'featured_images' => ['System\Models\File', 'order' => 'sort_order'],
+        'content_images'  => ['System\Models\File']
     ];
 
     /**
@@ -134,17 +133,6 @@ class Post extends Model
                'published_at' => Lang::get('rainlab.blog::lang.post.published_validation')
             ]);
         }
-    }
-
-    public function getUserOptions()
-    {
-        $options = [];
-
-        foreach (BackendUser::all() as $user) {
-            $options[$user->id] = $user->fullname . ' ('.$user->login.')';
-        }
-
-        return $options;
     }
 
     public function beforeSave()
@@ -190,10 +178,10 @@ class Post extends Model
     /**
      * Used to test if a certain user has permission to edit post,
      * returns TRUE if the user is the owner or has other posts access.
-     * @param  BackendUser $user
+     * @param  User $user
      * @return bool
      */
-    public function canEdit(BackendUser $user)
+    public function canEdit(User $user)
     {
         return ($this->user_id == $user->id) || $user->hasAnyAccess(['rainlab.blog.access_other_posts']);
     }
@@ -372,13 +360,12 @@ class Post extends Model
      */
     public function getHasSummaryAttribute()
     {
-        $more = Config::get('rainlab.blog::summary_separator', '<!-- more -->');
-        $length = Config::get('rainlab.blog::summary_default_length', 600);
+        $more = '<!-- more -->';
 
         return (
             !!strlen(trim($this->excerpt)) ||
             strpos($this->content_html, $more) !== false ||
-            strlen(Html::strip($this->content_html)) > $length
+            strlen(Html::strip($this->content_html)) > 600
         );
     }
 
@@ -396,17 +383,14 @@ class Post extends Model
             return $excerpt;
         }
 
-        $more = Config::get('rainlab.blog::summary_separator', '<!-- more -->');
-
+        $more = '<!-- more -->';
         if (strpos($this->content_html, $more) !== false) {
             $parts = explode($more, $this->content_html);
 
             return array_get($parts, 0);
         }
 
-        $length = Config::get('rainlab.blog::summary_default_length', 600);
-
-        return Html::limit($this->content_html, $length);
+        return Html::limit($this->content_html, 600);
     }
 
     //
@@ -611,9 +595,8 @@ class Post extends Model
             ];
 
             $posts = self::isPublished()
-                ->orderBy('title')
-                ->get()
-            ;
+            ->orderBy('title')
+            ->get();
 
             foreach ($posts as $post) {
                 $postItem = [

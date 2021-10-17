@@ -253,18 +253,6 @@
         this.updateContentEditorMode($tabPane, false)
     }
 
-    PagesPage.prototype.onDeletePageSingle  = function(el) {
-        var $el = $(el);
-
-        $el.request('onDelete', {
-            success: function(data) {
-                $.oc.pagesPage.closeTabs(data, 'page');
-                $.oc.pagesPage.updateObjectList('page');
-                $(this).trigger('close.oc.tab', [{force: true}]);
-            }
-        });
-    }
-
     /*
      * Updates the browser title when an object is saved.
      */
@@ -287,7 +275,7 @@
             }
         }).always(function(){
             $.oc.stripeLoadIndicator.hide()
-        });
+        })
     }
 
     /*
@@ -465,62 +453,59 @@
         if ($(e.target).attr('id') != 'pages-master-tabs')
             return
 
-        var $collapseIcon = $('<a href="javascript:;" class="tab-collapse-icon tabless"><i class="icon-chevron-up"></i></a>'),
-            $panel = $('.form-tabless-fields', data.pane),
-            $secondaryPanel = $('.control-tabs.secondary-tabs', data.pane),
-            $primaryPanel = $('.control-tabs.primary-tabs', data.pane),
-            hasSecondaryTabs = $secondaryPanel.length > 0
+            var $collapseIcon = $('<a href="javascript:;" class="tab-collapse-icon tabless"><i class="icon-chevron-up"></i></a>'),
+                $panel = $('.form-tabless-fields', data.pane),
+                $secondaryPanel = $('.control-tabs.secondary-tabs', data.pane),
+                $primaryPanel = $('.control-tabs.primary-tabs', data.pane),
+                hasSecondaryTabs = $secondaryPanel.length > 0
 
-        $secondaryPanel.addClass('secondary-content-tabs')
+            $secondaryPanel.addClass('secondary-content-tabs')
 
-        $panel.append($collapseIcon)
+            $panel.append($collapseIcon)
 
-        if (!hasSecondaryTabs) {
-            $primaryPanel.parent().removeClass('min-size');
-        }
+            if (!hasSecondaryTabs) {
+                $('.primary-tabs').parent().removeClass('min-size')
+            }
 
-        $secondaryPanel.find('> .tab-content > .tab-pane').not(':has(>.form-group[data-field-name=markup],>div>div.stretch)').addClass('padded-pane');
-        $secondaryPanel.find('> .layout-row > .nav-tabs > li:gt(0)').addClass('tab-content-bg');
+            $collapseIcon.click(function(){
+                $panel.toggleClass('collapsed')
 
-        $collapseIcon.click(function(){
-            $panel.toggleClass('collapsed')
-
-            if (typeof(localStorage) !== 'undefined')
-                localStorage.ocPagesTablessCollapsed = $panel.hasClass('collapsed') ? 1 : 0
-
-            window.setTimeout(function(){
-                $(window).trigger('oc.updateUi')
-            }, 500)
-
-            return false
-        })
-
-        var $primaryCollapseIcon = $('<a href="javascript:;" class="tab-collapse-icon primary"><i class="icon-chevron-down"></i></a>')
-
-        if ($primaryPanel.length > 0) {
-            $secondaryPanel.append($primaryCollapseIcon)
-
-            $primaryCollapseIcon.click(function(){
-                $primaryPanel.toggleClass('collapsed')
-                $secondaryPanel.toggleClass('primary-collapsed')
-                $(window).trigger('oc.updateUi')
                 if (typeof(localStorage) !== 'undefined')
-                    localStorage.ocPagesPrimaryCollapsed = $primaryPanel.hasClass('collapsed') ? 1 : 0
+                    localStorage.ocPagesTablessCollapsed = $panel.hasClass('collapsed') ? 1 : 0
+
+                window.setTimeout(function(){
+                    $(window).trigger('oc.updateUi')
+                }, 500)
+
                 return false
             })
-        } else {
-            $secondaryPanel.addClass('primary-collapsed')
-        }
 
-        if (typeof(localStorage) !== 'undefined') {
-            if (!$('a', data.tab).hasClass('new-template') && localStorage.ocPagesTablessCollapsed == 1)
-                $panel.addClass('collapsed')
+            var $primaryCollapseIcon = $('<a href="javascript:;" class="tab-collapse-icon primary"><i class="icon-chevron-down"></i></a>')
 
-            if (localStorage.ocPagesPrimaryCollapsed == 1 && hasSecondaryTabs) {
-                $primaryPanel.addClass('collapsed')
+            if ($primaryPanel.length > 0) {
+                $secondaryPanel.append($primaryCollapseIcon)
+
+                $primaryCollapseIcon.click(function(){
+                    $primaryPanel.toggleClass('collapsed')
+                    $secondaryPanel.toggleClass('primary-collapsed')
+                    $(window).trigger('oc.updateUi')
+                    if (typeof(localStorage) !== 'undefined')
+                        localStorage.ocPagesPrimaryCollapsed = $primaryPanel.hasClass('collapsed') ? 1 : 0
+                    return false
+                })
+            } else {
                 $secondaryPanel.addClass('primary-collapsed')
             }
-        }
+
+            if (typeof(localStorage) !== 'undefined') {
+                if (!$('a', data.tab).hasClass('new-template') && localStorage.ocPagesTablessCollapsed == 1)
+                    $panel.addClass('collapsed')
+
+                if (localStorage.ocPagesPrimaryCollapsed == 1 && hasSecondaryTabs) {
+                    $primaryPanel.addClass('collapsed')
+                    $secondaryPanel.addClass('primary-collapsed')
+                }
+            }
 
         var $form = $('form', data.pane),
             self = this,

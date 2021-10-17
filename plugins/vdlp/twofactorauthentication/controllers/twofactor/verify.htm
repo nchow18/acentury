@@ -1,0 +1,30 @@
+<h2><?= e(trans('vdlp.twofactorauthentication::lang.2fa.enter_code')) ?></h2>
+
+<?= Form::open() ?>
+    <input type="hidden" name="postback" value="1" />
+
+    <div class="form-elements" role="form">
+        <div class="form-group text-field horizontal-form october">
+            <input id="token"
+                   type="number"
+                   name="key"
+                   value=""
+                   class="form-control input-icon"
+                   placeholder="<?= e(trans('vdlp.twofactorauthentication::lang.2fa.authentication_code')) ?>"
+                   autofocus
+                   inputmode="numeric"
+                   pattern="[0-9]*"/>
+            <button type="submit" class="btn btn-primary login-button">
+                <?= e(trans('vdlp.twofactorauthentication::lang.2fa.verify_authentication_code')) ?>
+            </button>
+        </div>
+
+        <p class="pull-right forgot-password">
+            <a href="<?= Backend::url('backend/auth') ?>" class="text-muted">
+                <?= e(trans('backend::lang.form.cancel')) ?>
+            </a>
+        </p>
+    </div>
+<?= Form::close() ?>
+
+<?= $this->fireViewEvent('backend.auth.extendSigninView') ?>

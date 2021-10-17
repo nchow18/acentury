@@ -3,7 +3,6 @@
 namespace OFFLINE\GDPR\Classes\Traits;
 
 use Illuminate\Support\Facades\DB;
-use RainLab\Translate\Models\Attribute;
 
 /**
  * @see https://github.com/rainlab/translate-plugin/issues/209#issuecomment-362088300
@@ -24,7 +23,8 @@ trait TranslatableRelation
         foreach (post('RLTranslate') as $key => $value) {
             $data = collect($value)->intersectByKeys(array_flip($this->translatable));
 
-            $obj = Attribute::where('locale', $key)
+            $obj = DB::table('rainlab_translate_attributes')
+                     ->where('locale', $key)
                      ->where('model_id', $this->id)
                      ->where('model_type', get_class($this));
 
@@ -33,12 +33,14 @@ trait TranslatableRelation
                 continue;
             }
 
-            Attribute::create([
-                'locale'         => $key,
-                'model_id'       => $this->id,
-                'model_type'     => get_class($this),
-                'attribute_data' => $data->toJson(),
-            ]);
+            DB::table('rainlab_translate_attributes')
+              ->insert([
+                      'locale'         => $key,
+                      'model_id'       => $this->id,
+                      'model_type'     => get_class($this),
+                      'attribute_data' => $data->toJson(),
+                  ]
+              );
         }
     }
 

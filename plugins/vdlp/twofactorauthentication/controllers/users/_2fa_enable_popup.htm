@@ -1,0 +1,80 @@
+<?php
+
+declare(strict_types=1);
+
+use Vdlp\TwoFactorAuthentication\Classes\TwoFactorAuthentication\TwoFactorAuthentication;
+use Illuminate\Http\Request;
+
+$twoFactorAuthentication = resolve(TwoFactorAuthentication::class);
+$request = resolve(Request::class);
+
+$prefix = str_pad((string) $user->id, 20, 'X');
+$secretKey = $twoFactorAuthentication->generateSecretKey(32, $prefix);
+$qrCodeData = $twoFactorAuthentication->getQRCodeData($request->getHost(), $user->email, $secretKey, 300);
+?>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="popup" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><?= e(trans('vdlp.twofactorauthentication::lang.2fa.enable_2fa')) ?></h4>
+</div>
+<?= Form::open() ?>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <p><?= e(trans('vdlp.twofactorauthentication::lang.users.scan_qr_code')) ?></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label"><?= e(trans('vdlp.twofactorauthentication::lang.users.secret_key_qr')) ?></label>
+                <img src="<?= $qrCodeData ?>" width="100%" style="background-color:white; border: 2px dashed #BDC3C7;">
+            </div>
+            <div class="form-group">
+                <a href="javascript:;"
+                   data-control="popup"
+                   data-size="medium"
+                   data-keyboard="false"
+                   data-handler="onShowSupportedApplications">
+                    <span class="icon icon-info-circle"></span> <?= e(trans('vdlp.twofactorauthentication::lang.users.supported_applications')) ?>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label"><?= e(trans('vdlp.twofactorauthentication::lang.users.secret_key_text')) ?></label>
+                <textarea class="form-control" rows="3" style="font-family: 'Courier New'" readonly><?= $secretKey ?></textarea>
+                <input type="hidden" name="secret" value="<?= $secretKey ?>">
+            </div>
+            <div class="form-group">
+                <label for="2fa_code" class="control-label">
+                    <?= e(trans('vdlp.twofactorauthentication::lang.users.authentication_code_comment')) ?>
+                </label>
+                <input type="number"
+                       id="2fa_code"
+                       name="key"
+                       value=""
+                       class="form-control input-icon"
+                       autocomplete="one-time-code"
+                       inputmode="numeric"
+                       pattern="[0-9]*"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="loading-indicator-container">
+        <button type="button"
+                data-dismiss="popup"
+                class="btn btn-secondary pull-left">
+            <?= e(trans('backend::lang.form.cancel')) ?>
+        </button>
+        <button type="submit"
+                data-request="onEnableTwoFactorAuthentication"
+                data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                data-request-success="$('.modal').trigger('close.oc.popup');"
+                class="btn btn-primary pull-right">
+            <?= e(trans('vdlp.twofactorauthentication::lang.users.enable_two_factor_authentication')) ?>
+        </button>
+    </div>
+</div>
+<?= Form::close() ?>

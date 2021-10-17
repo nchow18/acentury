@@ -1,0 +1,70 @@
+<div class="vdlp-twofactorauthentication-setup">
+    <h2><?= e(trans('vdlp.twofactorauthentication::lang.2fa.enable_2fa')) ?></h2>
+    <p><?= e(trans('vdlp.twofactorauthentication::lang.2fa.2fa_required_comment')) ?> <?= e(trans('vdlp.twofactorauthentication::lang.users.scan_qr_code')) ?></p>
+    <form data-request="onSubmit">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label><?= e(trans('vdlp.twofactorauthentication::lang.users.secret_key_qr')) ?></label>
+                    <img src="<?= $qrCodeData ?>"
+                         width="100%"
+                         style="background-color:white;
+                         border: 2px dashed #BDC3C7;"
+                         alt="Two Factor Authentication QR Code">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label><?= e(trans('vdlp.twofactorauthentication::lang.users.secret_key_text')) ?></label>
+                    <textarea class="form-control" rows="5" style="font-family: 'Courier New'" readonly><?= $secretKey ?></textarea>
+                    <input type="hidden" name="secret" value="<?= $secretKey ?>">
+                </div>
+                <div class="form-group">
+                    <label for="2fa_code">
+                        <?= e(trans('vdlp.twofactorauthentication::lang.users.authentication_code_comment')) ?>
+                    </label>
+                    <input type="number"
+                           id="2fa_code"
+                           name="key"
+                           value=""
+                           class="form-control input-icon"
+                           autocomplete="one-time-code"
+                           inputmode="numeric"
+                           pattern="[0-9]*"
+                           autofocus/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit"
+                        class="btn btn-primary btn-block">
+                    <?= e(trans('vdlp.twofactorauthentication::lang.2fa.verify_authentication_code')) ?>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="forgot-password pull-right">
+                    <a href="<?= Backend::url('backend/auth') ?>" class="text-muted">
+                        <?= e(trans('backend::lang.form.cancel')) ?>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="forgot-password">
+                    <a href="javascript:;"
+                       class="text-muted"
+                       data-control="popup"
+                       data-size="medium"
+                       data-keyboard="false"
+                       data-handler="onShowSupportedApplications">
+                        <span class="icon icon-info-circle"></span> <?= e(trans('vdlp.twofactorauthentication::lang.users.supported_applications')) ?>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

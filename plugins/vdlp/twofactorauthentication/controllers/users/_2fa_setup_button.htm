@@ -1,0 +1,22 @@
+<?php $user = \BackendAuth::getUser() ?>
+<div class="form-group">
+    <?php if (!empty($user->getAttribute('vdlp-twofactorauthentication_google2fa_secret'))): ?>
+        <button class="btn btn-primary oc-icon-qrcode"
+                data-control="popup"
+                data-size="small"
+                data-keyboard="false"
+                data-handler="onDisableTwoFactorAuthenticationPopup">
+            <?= e(trans('vdlp.twofactorauthentication::lang.2fa.disable_2fa')) ?>
+        </button>
+        <p class="help-block" style="color: #0EA804"><?= e(trans('vdlp.twofactorauthentication::lang.2fa.account_enabled')) ?></p>
+    <?php else: ?>
+        <button class="btn btn-primary oc-icon-qrcode"
+                data-control="popup"
+                data-size="medium"
+                data-keyboard="false"
+                data-handler="onEnableTwoFactorAuthenticationPopup">
+            <?= e(trans('vdlp.twofactorauthentication::lang.2fa.enable_2fa')) ?>
+        </button>
+        <p class="help-block" style="color: #7f1f15"><?= e(trans('vdlp.twofactorauthentication::lang.2fa.account_disabled')) ?></p>
+    <?php endif ?>
+</div>

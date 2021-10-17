@@ -57,10 +57,7 @@ return [
         'featured_images' => 'Uitgelichte afbeelding',
         'delete_confirm' => 'Weet je zeker dat je dit artikel wilt verwijderen?',
         'close_confirm' => 'Artikel is nog niet opgeslagen.',
-        'return_to_posts' => 'Terug naar artikel overzicht',
-        'posted_byline' => 'Gepubliceerd in :categories op :date.',
-        'posted_byline_no_categories' => 'Gepubliceerd op :date.',
-        'date_format' => 'd, M, Y',
+        'return_to_posts' => 'Terug naar artikel overzicht'
     ],
     'categories' => [
         'list_title' => 'Beheer blog categorieën',

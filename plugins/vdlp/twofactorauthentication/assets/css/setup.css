@@ -1,0 +1,21 @@
+.vdlp-twofactorauthentication-setup p {
+    color: white;
+}
+
+.vdlp-twofactorauthentication-setup .control-label {
+    color: white;
+}
+
+.vdlp-twofactorauthentication-setup .btn-block {
+    text-align: center;
+}
+
+.vdlp-twofactorauthentication-setup p {
+    font-size: 13px;
+}
+
+.vdlp-twofactorauthentication-setup p.forgot-password {
+    text-align: left;
+    padding: 0;
+    margin-top: 7px !important;
+}

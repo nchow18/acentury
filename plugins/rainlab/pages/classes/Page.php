@@ -244,14 +244,14 @@ class Page extends ContentBase
         foreach ($this->getChildren() as $subPage) {
             $result = array_merge($result, $subPage->delete());
         }
-
+        
         /*
          * Delete the object
          */
         $result = array_merge($result, [$this->getBaseFileName()]);
 
         parent::delete();
-
+        
         /*
          * Remove from meta
          */
@@ -578,9 +578,6 @@ class Page extends ContentBase
         $this->attributes['placeholders'] = $placeholders;
     }
 
-    /**
-     * getProcessedMarkup will return the processed markup of a page
-     */
     public function getProcessedMarkup()
     {
         if ($this->processedMarkupCache !== false) {
@@ -603,11 +600,6 @@ class Page extends ContentBase
         if (!empty($globalVars)) {
             $markup = TextParser::parse($markup, $globalVars);
         }
-
-        /*
-         * Event hook
-         */
-        Event::fire('pages.page.getProcessedMarkup', [&$markup]);
 
         return $this->processedMarkupCache = $markup;
     }
@@ -914,8 +906,7 @@ class Page extends ContentBase
         $iterator($pageList->getPageTree(), null, 0);
 
         self::$menuTreeCache = $menuTree;
-        $comboConfig = Config::get('cms.parsedPageCacheTTL', Config::get('cms.template_cache_ttl', 10));
-        $expiresAt = now()->addMinutes($comboConfig);
+        $expiresAt = now()->addMinutes(Config::get('cms.parsedPageCacheTTL', 10));
         Cache::put($key, serialize($menuTree), $expiresAt);
 
         return self::$menuTreeCache;

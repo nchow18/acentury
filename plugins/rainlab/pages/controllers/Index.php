@@ -107,7 +107,7 @@ class Index extends Controller
         // before it loads dynamically.
         $this->addJs('/modules/backend/formwidgets/codeeditor/assets/js/build-min.js', 'core');
 
-        $this->bodyClass = 'compact-container sidenav-responsive';
+        $this->bodyClass = 'compact-container';
         $this->pageTitle = 'rainlab.pages::lang.plugin.name';
         $this->pageTitleTemplate = Lang::get('rainlab.pages::lang.page.template_title');
 
@@ -358,18 +358,10 @@ class Index extends Controller
         $object = $this->loadObject($type, trim(Request::input('objectPath')));
 
         if ($this->canCommitObject($object)) {
-            if (class_exists('System')) {
-                // v1.2
-                $datasource = $this->getThemeDatasource();
-                $datasource->updateModelAtIndex(1, $object);
-                $datasource->forceDeleteModelAtIndex(0, $object);
-            }
-            else {
-                // v1.1
-                $datasource = $this->getThemeDatasource();
-                $datasource->pushToSource($object, 'filesystem');
-                $datasource->removeFromSource($object, 'database');
-            }
+            // Populate the filesystem with the object and then remove it from the db
+            $datasource = $this->getThemeDatasource();
+            $datasource->pushToSource($object, 'filesystem');
+            $datasource->removeFromSource($object, 'database');
 
             Flash::success(Lang::get('cms::lang.editor.commit_success', ['type' => $type]));
         }
@@ -389,16 +381,9 @@ class Index extends Controller
         $object = $this->loadObject($type, trim(Request::input('objectPath')));
 
         if ($this->canResetObject($object)) {
-            if (class_exists('System')) {
-                // v1.2
-                $datasource = $this->getThemeDatasource();
-                $datasource->forceDeleteModelAtIndex(0, $object);
-            }
-            else {
-                // v1.1
-                $datasource = $this->getThemeDatasource();
-                $datasource->removeFromSource($object, 'database');
-            }
+            // Remove the object from the DB
+            $datasource = $this->getThemeDatasource();
+            $datasource->removeFromSource($object, 'database');
 
             Flash::success(Lang::get('cms::lang.editor.reset_success', ['type' => $type]));
         }
@@ -438,6 +423,8 @@ class Index extends Controller
 
     /**
      * Get the active theme's datasource
+     *
+     * @return \October\Rain\Halcyon\Datasource\DatasourceInterface
      */
     protected function getThemeDatasource()
     {
@@ -455,24 +442,11 @@ class Index extends Controller
     {
         $result = false;
 
-        if (class_exists('System')) {
-            // v1.2
-            if (
-                Config::get('app.debug', false) &&
-                $this->theme->secondLayerEnabled() &&
-                $this->getThemeDatasource()->hasModelAtIndex(1, $object)
-            ) {
-                $result = true;
-            }
-        }
-        else {
-            // v1.1
-            if (Config::get('app.debug', false) &&
-                Theme::databaseLayerEnabled() &&
-                $this->getThemeDatasource()->sourceHasModel('database', $object)
-            ) {
-                $result = true;
-            }
+        if (Config::get('app.debug', false) &&
+            Theme::databaseLayerEnabled() &&
+            $this->getThemeDatasource()->sourceHasModel('database', $object)
+        ) {
+            $result = true;
         }
 
         return $result;
@@ -489,20 +463,9 @@ class Index extends Controller
     {
         $result = false;
 
-        if (class_exists('System')) {
-            // v1.2
-            if ($this->theme->secondLayerEnabled()) {
-                $datasource = $this->getThemeDatasource();
-                $result = $datasource->hasModelAtIndex(0, $object) &&
-                    $datasource->hasModelAtIndex(1, $object);
-            }
-        }
-        else {
-            // v1.1
-            if (Theme::databaseLayerEnabled()) {
-                $datasource = $this->getThemeDatasource();
-                $result = $datasource->sourceHasModel('database', $object) && $datasource->sourceHasModel('filesystem', $object);
-            }
+        if (Theme::databaseLayerEnabled()) {
+            $datasource = $this->getThemeDatasource();
+            $result = $datasource->sourceHasModel('database', $object) && $datasource->sourceHasModel('filesystem', $object);
         }
 
         return $result;
@@ -614,46 +577,24 @@ class Index extends Controller
         }
     }
 
-    /**
-     * modLegacyModeFields will ensure specific field types use legacy mode
-     */
-    protected function modLegacyModeFields($fields)
-    {
-        foreach ($fields as &$fieldConfig) {
-            if (in_array($fieldConfig['type'], ['richeditor', 'codeeditor'])) {
-                $fieldConfig['legacyMode'] = true;
-            }
-        }
-
-        return $fields;
-    }
-
-    /**
-     * addPageSyntaxFields adds syntax defined fields to the form
-     */
     protected function addPageSyntaxFields($formWidget, $page)
     {
         $fields = $page->listLayoutSyntaxFields();
-        $fields = $this->modLegacyModeFields($fields);
 
         foreach ($fields as $fieldCode => $fieldConfig) {
-            if ($fieldConfig['type'] === 'fileupload') {
-                continue;
-            }
+            if ($fieldConfig['type'] == 'fileupload') continue;
 
-            if ($fieldConfig['type'] === 'repeater') {
+            if ($fieldConfig['type'] == 'repeater') {
                 if (empty($fieldConfig['form']) || !is_string($fieldConfig['form'])) {
-                    $repeaterFields = array_get($fieldConfig, 'fields', []);
-                    $repeaterFields = $this->modLegacyModeFields($repeaterFields);
-                    $fieldConfig['form']['fields'] = $repeaterFields;
+                    $fieldConfig['form']['fields'] = array_get($fieldConfig, 'fields', []);
                     unset($fieldConfig['fields']);
                 }
             }
 
             /*
-             * Custom fields placement
-             */
-            $placement = !empty($fieldConfig['placement']) ? $fieldConfig['placement'] : null;
+            * Custom fields placement
+            */
+            $placement = (!empty($fieldConfig['placement']) ? $fieldConfig['placement'] : NULL);
 
             switch ($placement) {
                 case 'primary':
@@ -689,8 +630,7 @@ class Index extends Controller
             $fieldConfig = [
                 'tab'     => $placeholderTitle,
                 'stretch' => '1',
-                'size'    => 'huge',
-                'legacyMode' => true
+                'size'    => 'huge'
             ];
 
             if ($info['type'] != 'text') {
@@ -755,12 +695,6 @@ class Index extends Controller
     {
         $objectPath = trim(Request::input('objectPath'));
         $object = $objectPath ? $this->loadObject($type, $objectPath) : $this->createObject($type);
-
-        // Set page layout super early because it cascades to other elements
-        if ($type === 'page' && ($layout = post('viewBag[layout]'))) {
-            $object->getViewBag()->setProperty('layout', $layout);
-        }
-
         $formWidget = $this->makeObjectFormWidget($type, $object, Request::input('formWidgetAlias'));
 
         $saveData = $formWidget->getSaveData();
@@ -789,8 +723,7 @@ class Index extends Controller
         if ($type == 'page') {
             $placeholders = array_get($saveData, 'placeholders');
 
-            $comboConfig = Config::get('cms.convertLineEndings', Config::get('system.convert_line_endings', false));
-            if (is_array($placeholders) && $comboConfig === true) {
+            if (is_array($placeholders) && Config::get('cms.convertLineEndings', false) === true) {
                 $placeholders = array_map([$this, 'convertLineEndings'], $placeholders);
             }
 
@@ -823,8 +756,7 @@ class Index extends Controller
             }
         }
 
-        $comboConfig = Config::get('cms.convertLineEndings', Config::get('system.convert_line_endings', false));
-        if (!empty($objectData['markup']) && $comboConfig === true) {
+        if (!empty($objectData['markup']) && Config::get('cms.convertLineEndings', false) === true) {
             $objectData['markup'] = $this->convertLineEndings($objectData['markup']);
         }
 
@@ -879,14 +811,21 @@ class Index extends Controller
 
         if (!$objectPath) {
             $object = $this->createObject($type);
-        }
-        else {
-            $object = $this->loadObject($type, $objectPath);
-        }
 
-        // Set page layout super early because it cascades to other elements
-        if ($type === 'page' && ($layout = post('viewBag[layout]'))) {
-            $object->getViewBag()->setProperty('layout', $layout);
+            if ($type === 'page') {
+                /**
+                 * If layout is in POST, populate that into the object's viewBag to allow placeholders and syntax
+                 * fields to still work when editing a new page.
+                 * 
+                 * Fixes https://github.com/octobercms/october/issues/4628
+                 */
+                $layout = Request::input('viewBag.layout');
+                if ($layout) {
+                    $object->getViewBag()->setProperty('layout', $layout);
+                }
+            }
+        } else {
+            $object = $this->loadObject($type, $objectPath);
         }
 
         $widget = $this->makeObjectFormWidget($type, $object, $alias);

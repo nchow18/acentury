@@ -1,0 +1,26 @@
+{
+    "name": "vdlp/oc-twofactorauthentication-plugin",
+    "description": "Adds an extra layer of security to the October CMS backend.",
+    "type": "october-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Van der Let & Partners",
+            "email": "octobercms@vdlp.nl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "pragmarx/google2fa": "^8.0",
+        "endroid/qr-code": "^4.2",
+        "october/backend": "^2.0"
+    },
+    "archive": {
+        "exclude": [
+            ".gitignore",
+            ".gitlab-ci.yml",
+            ".idea/"
+        ]
+    }
+}

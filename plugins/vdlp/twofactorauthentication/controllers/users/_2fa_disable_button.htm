@@ -1,0 +1,10 @@
+<?php $user = $this->formGetModel() ?? $user; ?>
+<?php if ($user instanceof \Backend\Models\User && !empty($user->getAttribute('vdlp-twofactorauthentication_google2fa_secret'))): ?>
+    <button class="btn btn-block btn-default"
+            data-request="onDisableTwoFactorAuthenticationSuperUser"
+            data-request-data="id:<?= $user->getKey() ?>"
+            data-request-confirm="<?= e(trans('vdlp.twofactorauthentication::lang.2fa.disable_2fa_confirm')) ?>"
+            style="width: 100%; text-align: center">
+        <?= e(trans('vdlp.twofactorauthentication::lang.2fa.disable_2fa')) ?>
+    </button>
+<?php endif; ?>
