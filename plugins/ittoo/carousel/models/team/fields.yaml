@@ -1,0 +1,26 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: left
+        required: 1
+        type: text
+    title:
+        label: Title
+        span: left
+        required: 1
+        type: text
+    image:
+        label: Image 
+        mode: image
+        imageWidth: 140
+        useCaption: true
+        thumbOptions:
+            mode: fit
+            extension: auto
+        span: full
+        required: 0
+        type: fileupload

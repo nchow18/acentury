@@ -1,0 +1,33 @@
+title = "News"
+url = "/news/:page?"
+layout = "with-banner-overlapped-full-width"
+meta_title = "The Latest Company News and Publications"
+meta_description = "A collection of all the news, publications and authored articles relevant to the company and the RF wireless networking industry."
+is_hidden = 0
+
+[regionPosts newsPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = 30
+noPostsMessage = "No news found"
+sortOrder = "published_at desc"
+categoryPage = "news"
+postPage = "news-post"
+
+[banner]
+slide = 13
+==
+<?php
+function onEnd()
+{
+    if ($this->category)
+       $this->page->title = $this->category->name;
+}
+?>
+==
+<div class="page-content">
+    <div class="page-posts ">
+        {% content 'news/content' %}
+        {% component 'newsPosts' %}
+    </div>
+</div>

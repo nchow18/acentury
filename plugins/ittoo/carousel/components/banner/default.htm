@@ -1,0 +1,27 @@
+{% set slide = __SELF__.slide() %}
+
+{% if slide %}
+<div class="hero{% if slide.darken_bg %} dark{% endif %}">
+    <div class="hero-bg" style="{% if slide.image %}background-image:url({{ slide.imageSmall }}){% endif %};background-color:{{ slide.bgcolor? slide.bgcolor : '#000' }}" data-interchange="[{{ slide.imageSmall }}, small], [{{ slide.imageMedium }}, medium], [{{ slide.imagePath }}, large]"></div>
+    <div class="grid-container">
+        <div class="hero-content">
+        {% if slide.caption %}
+            <h1 class="page-title">{{ slide.caption|raw }}</h1>
+        {% endif %}        
+        {% if slide.tagline %}
+            <div class="h4">{{ slide.tagline|raw }}</div>
+        {% endif %}        
+        {% if slide.description %}
+            <div class="h6">{{ slide.description|raw }}</div>
+        {% endif %}
+        {% if slide.but_link and slide.but_name %}
+            <p><a class="button smaller" href="{{ slide.but_link }}">{{ slide.but_name }}</a></p>
+        {% endif %}        
+        </div>
+        
+        {% if slide.but_link and slide.link_whole %}
+            <a class="link-overlay" href="{{ slide.but_link }}"></a>
+        {% endif %}        
+    </div>
+</div>
+{% endif %}

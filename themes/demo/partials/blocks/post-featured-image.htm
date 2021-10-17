@@ -1,0 +1,9 @@
+description = "Blog post featured image"
+
+[viewBag]
+==
+{% for image in post.featured_images|slice(0, 1) %}
+    <figure>
+        <img src="{{ image.path }}" alt="">
+    </figure>                
+{% endfor %}

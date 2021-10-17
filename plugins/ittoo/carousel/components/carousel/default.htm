@@ -1,0 +1,78 @@
+{# altSection #}
+{% if __SELF__.carousel and __SELF__.carousel.slides %}
+    {% for i, slide in __SELF__.carousel.slides %}
+    
+    {# valign #}
+    {% set valign = "align-middle" %}
+    {% if 1 == slide.valign %}
+        {% set valign = "align-top" %}
+    {% elseif 2 == slide.valign %}
+        {% set valign = "align-bottom" %}
+    {% endif %}
+    
+    {# vspacing #}
+    {% set vspacing = "-pad" %}
+    {% if 1 == slide.vspacing %}
+        {% set vspacing = "-pt" %}
+    {% elseif 2 == slide.vspacing %}
+        {% set vspacing = "-pb" %}
+    {% endif %}    
+    
+    <section class="section-alt {{ vspacing }}"{% if slide.bgcolor %} style="background-color:{{ slide.bgcolor }}"{% endif %}>
+        <div class="section-container">
+            <div class="section-pad">
+                <div class="grid-x grid-padding-x {{ valign }}">
+                    <div class="cell small-12 medium-6 large-5 image relative">
+                        {% if slide.image_carousel %}
+                        <div class="orbit section-orbit" data-orbit>
+                            <div class="orbit-container">
+                                {% for j, child in slide.image_carousel.slides %}
+                                <div class="{% if j == 0 %}is-active {% endif %}orbit-slide" style="background-image:url({{ child.imageSmall }});background-color:{{ child.bgcolor? child.bgcolor : '#fff' }};background-size:contain">
+
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% else %}                
+                            <img src="{{ slide.imagePath }}" alt="">
+                            {# <img src="{{ slide.image.getThumb(530, false, {'mode':'auto'}) }}" alt=""> #}
+                        {% endif %}
+                        {% if slide.but_link and slide.link_whole %}
+                            <a class="link-overlay" href="{{ slide.but_link }}"></a>
+                        {% endif %}        
+                        
+                    </div>   
+                    
+                    <div class="cell small-12 medium-6 large-7 content relative">
+                        
+                        {%if slide.subtitle %}
+                            <div class="h4">{{ slide.subtitle|raw }}</div>
+                            
+                            {% if slide.caption %}
+                                <h2 class="page-title with-subtitle">{{ slide.caption|raw }}</h2>
+                            {% endif %}
+                        {% else %}
+                            {% if slide.caption %}
+                                <h2 class="page-title">{{ slide.caption|raw }}</h2>
+                            {% endif %}
+                        {% endif %}
+                            
+                        {% if slide.tagline %}
+                            <div class="h4 page-tagline">{{ slide.tagline|raw }}</div>
+                        {% endif %}        
+                        <div class="h6">
+                            {{ slide.description|raw }}
+                            {% if slide.but_link and slide.but_name %}
+                                <a class="button" href="{{ slide.but_link }}">{{ slide.but_name }}</a>
+                            {% endif %}
+                        </div>
+                        {% if slide.but_link and slide.link_whole %}
+                            <a class="link-overlay" href="{{ slide.but_link }}"></a>
+                        {% endif %}        
+                    </div>         
+                </div> 
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+{% endif %}

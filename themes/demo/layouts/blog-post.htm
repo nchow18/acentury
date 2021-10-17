@@ -1,0 +1,25 @@
+description = "Blog post layout"
+
+[cookieBanner]
+include_css = 0
+update_partial = "site/gdpr"
+update_selector = "#gdpr-reload"
+
+[regionPicker]
+==
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% partial 'site/head' %}
+    </head>
+    <body>      
+        {% partial 'site/noscript' %}        
+        <div class="grid-y y-100 layout-overlap page-post">
+            {% partial 'site/header' %}
+            {% page %}
+            {% partial 'site/footer' %}
+        </div>        
+        {% partial 'site/popup-mailchimp' %}
+        {% partial 'site/scripts' %}        
+    </body>
+</html>

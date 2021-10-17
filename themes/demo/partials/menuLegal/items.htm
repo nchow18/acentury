@@ -1,0 +1,15 @@
+{% for item in items if not item.viewBag.isHidden %}
+    <li class="{{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}{% if item.items %} is-dropdown-submenu-parent{% endif %}" role="menuitem">
+        {% if item.url %}
+            <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }}>
+                {{ item.title }}
+            </a>
+        {% else %}
+            <a href='#'>{{ item.title }}</a>
+        {% endif %}
+
+        {% if item.items %}
+            <ul class="menu">{% partial __SELF__ ~ "::items" items=item.items %}</ul>
+        {% endif %}
+    </li>
+{% endfor %}

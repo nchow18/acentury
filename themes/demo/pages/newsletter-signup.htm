@@ -1,0 +1,33 @@
+title = "Newsletter Sign-up"
+url = "/newsletter-signup-c"
+layout = "default"
+is_hidden = 0
+
+[banner]
+slide = 44
+
+[regionPosts blogPostsBlock]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = 4
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news"
+postPage = "news-post"
+==
+<?php
+function onStart()
+{
+    $this['ito_popup'] = false;
+}
+?>
+==
+<section class="section grid-container page-container">
+    <div class="page-content">
+        <div style="max-width: 800px;">
+        {% partial 'site/mailchimp-signup-c.htm' %}
+        </div>
+    </div>
+</section>
+ 
+ {% component 'blogPostsBlock' %}

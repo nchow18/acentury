@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: full
+        required: 1
+        type: text
+    image_height:
+        label: Image Height (px)
+        span: left
+        default: '600'
+        required: 1
+        type: number        
+    with_controls:
+        label: With Controls
+        span: left
+        type: switch
+    with_indicators:
+        label: With Indicators
+        span: left
+        type: switch

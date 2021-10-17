@@ -1,0 +1,34 @@
+title = "Fiber Cable Solutions"
+url = "/fiber-cable-solutions"
+layout = "with-banner-overlapped-full-width"
+is_hidden = 0
+
+[banner]
+slide = 82
+
+[threeCols]
+carousel = 26
+filterRegion = 0
+centerTitle = 0
+centerCTA = 0
+
+[carousel altSections]
+carousel = 27
+filterRegion = 0
+==
+<div class="grid-container page-container">
+    <div class="page-content">
+        {% content 'fiber-cable-solutions/content' %}
+        <div class="grid-container" style="position:relative;top:50px;">
+            <h4 class="text-center">Features and Benefits</h4>
+            {% component 'threeCols' %}
+        </div>
+        
+        {% component 'altSections' %}
+    </div>
+</div>
+<div class="grid-container">
+    <div class="text-center mt4 pb4">
+        {% content 'network-components/footer' %}
+    </div>
+</div>

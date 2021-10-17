@@ -1,0 +1,16 @@
+{% set currentRegion = __SELF__.region.getRegion() %}
+<div class="region-switcher">
+    <div class="inline">
+        Change Region
+    </div>
+    <div class="inline">
+        <select name="region-switcher" data-request="onChange">
+            {% for key, region in __SELF__.region.getAvailableRegions() %}
+            <option value="{{ key }}"{% if key == currentRegion %} selected{% endif %}>{{ region }}</option>
+            {% endfor %}    
+        </select>
+    </div>
+</div>
+
+
+    

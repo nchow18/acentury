@@ -1,0 +1,20 @@
+title = "News - Post"
+url = "/news/b/:slug"
+layout = "blog-post"
+is_hidden = 0
+
+[blogPost newsPost]
+slug = "{{ :slug }}"
+categoryPage = "news"
+==
+<?php
+function onEnd()
+{
+    if ($this->post) {
+       $this->page->title = $this->post->title;
+       $this->page->meta_description = $this->post->excerpt;
+    }
+}
+?>
+==
+{% component 'newsPost' %}

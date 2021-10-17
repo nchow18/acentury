@@ -1,0 +1,20 @@
+name: Acentury
+description: 'Custom Theme for Acentury.ca frontend'
+author: Dream Studio 9
+homepage: 'http://dreamstudio9.com'
+code: 'acentury'
+
+form:
+  fields:
+    site_name:
+      label: Site name
+      default: Acentury
+      
+    site_logo:
+      label: Site logo
+
+      type: mediafinder
+      mode: image
+
+      default: null      
+

@@ -1,0 +1,59 @@
+title = "Pushing wireless innovation at a global scale"
+url = "/"
+layout = "default"
+meta_title = "Pushing wireless innovation at a global scale."
+meta_description = "Building best-in-class products and test measurement solutions for the wireless networking industry."
+is_hidden = 0
+
+[viewBag]
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[carousel altSections]
+carousel = 3
+filterRegion = 1
+
+[latestPost]
+categoryFilter = "news"
+categoryPage = "news"
+postPage = "news-post"
+
+[latestPost latestPost2]
+categoryFilter = "product-update"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[latestPost latestPost3]
+categoryFilter = "educational"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[latestPost latestPost4]
+categoryFilter = "use-case"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[carousel orbit]
+carousel = 21
+filterRegion = 0
+==
+<div class="page-home">{% component 'orbit' %}
+    {% component 'altSections' %}
+    
+    <div class="grid-container page-content">
+        {% partial 'blocks/threecolumns' %}    </div>    <div class="grid-container page-content" style="position:relative;top:-50px;">
+        {% partial 'blocks/contact-us' %}
+</div>
+    <div class="block-posts">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y align-stretch posts">
+            {% component 'latestPost' %}
+            {% component 'latestPost2' %}
+            {% component 'latestPost3' %}
+            {% component 'latestPost4' %}
+            </div>
+        </div>
+    </div>    
+</div>

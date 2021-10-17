@@ -1,0 +1,55 @@
+[viewBag]
+==
+{% if __SELF__.carousel and __SELF__.carousel.slides %}
+    <div id="slider-{{ __SELF__.carousel.id }}" class="orbit" role="region" aria-label="Banner" data-orbit data-options="animInFromLeft:fade-in;animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+        <div class="orbit-container" style="height:{{ __SELF__.carousel.image_height }}px;">
+            {% for i, slide in __SELF__.carousel.slides %}
+                <div class="{% if i == 0 %}is-active {% endif %}orbit-slide" style="background-image:url({{ slide.imageSmall }});background-color:{{ slide.bgcolor? slide.bgcolor : '#000' }}" data-interchange="[{{ slide.imageSmall }}, small], [{{ slide.imageMedium }}, medium], [{{ slide.imagePath }}, large]">
+                   
+                        {% if slide.darken_bg %}
+                        <div class="wrapper" style="width:100%;left:0;right:0;bottom:0%;top:0;background-color:#000;opacity:.5">
+                        </div>
+                        {% endif %}
+                        <div class="lighten"></div>
+
+                        {% if slide.caption or slide.description %}
+                        <div class="txt">
+                            {% if slide.caption %}
+                                <h1>{{ slide.caption }}</h1>
+                            {% endif %}
+
+                            {% if (slide.description) %}     
+                                <div class="h4">
+                                {{ slide.description|raw }}
+                                </div>
+                            {% endif %}
+
+                            {% if slide.but_link and  slide.but_name %}
+                                <p><a class="button" href="{{ slide.but_link }}">{{ slide.but_name }}</a></p>
+                            {% endif %}                        
+                        </div>
+                        {% endif %}
+                        
+                        {% if slide.but_link and slide.link_whole %}
+                            <a class="link-overlay" href="{{ slide.but_link }}"></a>
+                        {% endif %}        
+                </div>
+            {% endfor %}
+        </div>
+        
+        {% if __SELF__.carousel.with_controls and __SELF__.carousel.slides|length > 1 %}
+            <div class="orbit-arrows">
+                <button class="orbit-previous"><span class="show-for-sr">{{ '_layout.previousSlide'|trans }}</span><i class="fa fa-chevron-left fa-2x"></i></button>
+                <button class="orbit-next"><span class="show-for-sr">{{ '_layout.nextSlide'|trans }}</span><i class="fa fa-chevron-right fa-2x"></i></button>
+            </div>
+        {% endif %}
+                        
+        {% if __SELF__.carousel.with_indicators and __SELF__.carousel.slides|length > 1 %}
+            <div class="orbit-bullets right">
+                {% for i, slide in __SELF__.carousel.slides %}
+                    <button class="{% if i == 0 %}is-active{% endif %}" data-slide="{{ i }}"></button>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

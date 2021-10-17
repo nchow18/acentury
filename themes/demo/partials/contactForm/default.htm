@@ -1,0 +1,17 @@
+<form data-request="{{ __SELF__ }}::onFormSubmit">
+
+    {{ form_token() }}
+
+    <div id="{{ __SELF__ }}_forms_flash"></div>
+
+    <div id="contactFormWrapper">
+        <input type="text" placeholder="Name" id="name" name="name">
+        <input type="text" placeholder="Email" id="email" name="email">
+        <input type="text" placeholder="Subject" id="subject" name="subject">
+        <textarea placeholder="Message" id="message" name="message" rows="8" cols="80"></textarea>
+
+        {% partial '@recaptcha' %}
+
+        <button id="submit" type="submit" class="button large expanded">Send</button>
+    </div>
+</form>

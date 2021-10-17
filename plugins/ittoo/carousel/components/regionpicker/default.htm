@@ -1,0 +1,24 @@
+{% if __SELF__.show %}
+<div id="region-switcher" class="region-switcher">
+    <div class="inline">
+        You are currently visiting Acentury.ca, would you like to visit your regional site? 
+    </div>
+    <div class="inline">
+        <select name="region-switcher" data-request="onChange">
+            {% for key, region in __SELF__.region.getAvailableRegions() %}
+            <option value="{{ key }}">{{ region }}</option>
+            {% endfor %}    
+        </select>
+        <button role="button" 
+            tabindex="0" 
+            aria-pressed="false"
+            class="text-white"
+            data-request="onDismiss"
+            data-request-success="document.getElementById('region-switcher').remove()"><i class="fas fa-times fa-lg"></i></button>
+    </div>
+</div>
+{% endif %}
+
+
+
+    

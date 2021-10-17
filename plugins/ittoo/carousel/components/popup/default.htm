@@ -1,0 +1,26 @@
+{% set enabled = __SELF__.property('enabled') %}
+{% set modalId =  __SELF__.property('id') %}
+{% set delay = __SELF__.property('delay') * 1000 %}
+{% set reset = __SELF__.property('reset') * 1000 %}
+
+
+{% if enabled %}
+
+<div id="{{ modalId }}" class="reveal" data-reveal>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    
+    {% partial __SELF__.property('block') %}
+</div>
+
+
+{% put script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Popup('{{ modalId }}', {{ delay }}, {{ reset }});
+    });
+</script>
+{% endput %}
+
+{% endif %}

@@ -1,0 +1,94 @@
+title = "DEMO"
+url = "/demo"
+layout = "default"
+meta_title = "Pushing wireless innovation at a global scale."
+meta_description = "Building best-in-class products and test measurement solutions for the wireless networking industry."
+is_hidden = 0
+
+[viewBag]
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[carousel altSections]
+carousel = 3
+filterRegion = 0
+
+[latestPost]
+categoryFilter = "news"
+categoryPage = "news"
+postPage = "news-post"
+
+[latestPost latestPost2]
+categoryFilter = "product-update"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[latestPost latestPost3]
+categoryFilter = "educational"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[latestPost latestPost4]
+categoryFilter = "use-case"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+
+[threeCols]
+carousel = 11
+filterRegion = 1
+centerTitle = 0
+centerCTA = 0
+
+[carousel orbit]
+carousel = 1
+filterRegion = 0
+
+[banner]
+slide = 23
+
+[carousel altSections2]
+carousel = 14
+filterRegion = 0
+==
+<div class="page-home">
+    <h3>Rotor / Orbit:</h3><hr />   
+    {% component 'orbit' %}
+    
+    <br /><br /><h3>Banner / Hero:</h3><hr />   
+    {% component 'banner' %}
+
+    <br /><br /><h3>Alternating Section:</h3><hr />   
+    <div class="grid-container pb4">
+         {% component 'altSections' %}
+    </div>
+    
+    <br /><br /><h3>Alternating Section with rotor:</h3><hr />   
+    {% component 'altSections2' %}
+    
+    <br /><br /><h3>Logo carousel:</h3><hr />   
+    If more than 10 logos, it will split into two rows
+    {% partial 'blocks/logos-company' %}
+        
+    <br /><br /><h3>Horizontal logo list:</h3><hr />   
+    {% partial 'blocks/logos-partner' %}
+
+    <br /><br /><h3>"Slides" displayed in 3 columns:</h3><hr />   
+    Options to center title and CTA buttons
+    {% component 'threeCols' %}
+    
+    <br /><br /><h3>New "Contact Us" block</h3><hr />   
+    {% partial 'blocks/contact-us' %}
+    
+    <div class="block-posts">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y align-stretch posts">
+            {% component 'latestPost' %}
+            {% component 'latestPost2' %}
+            {% component 'latestPost3' %}
+            {% component 'latestPost4' %}
+            </div>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,9 @@
+{% if __SELF__.logos %}
+        <ul class="logo-container">
+            {% for i, logo in __SELF__.logos %}
+                {% if logo.image %}
+                <li><img src="{{ logo.image.getThumb(null, 30, {'mode':'portrait'}) }}" alt="{{ logo.name }}" /></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+{% endif %}

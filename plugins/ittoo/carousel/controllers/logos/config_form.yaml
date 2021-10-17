@@ -1,0 +1,27 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Logo
+
+# Model Form Field configuration
+form: $/ittoo/carousel/models/logo/fields.yaml
+
+# Model Class name
+modelClass: Ittoo\Carousel\Models\Logo
+
+# Default redirect location
+defaultRedirect: ittoo/carousel/logos
+
+# Create page
+create:
+    title: Create Logo
+    redirect: ittoo/carousel/logos/update/:id
+    redirectClose: ittoo/carousel/logos
+
+# Update page
+update:
+    title: Edit Logo
+    redirect: ittoo/carousel/logos
+    redirectClose: ittoo/carousel/logos

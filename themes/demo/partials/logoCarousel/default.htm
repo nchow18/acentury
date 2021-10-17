@@ -1,0 +1,63 @@
+description = "Display Company Logo"
+
+[viewBag]
+==
+{% set logos = __SELF__.logos %}
+{% if logos %}   
+    <div class="carousel-logos" style="max-width: 1000px; margin:0 auto;">
+
+        {% if logos|length <= 10 %} {# one row #}
+            <div id="{{ __SELF__.id }}-t" class="list-logos">
+                <div class="carousel-logos-container">
+                    <div class="wrapper"> 
+                        {% for i, logo in logos %}
+                            {% if logo.image %}
+                            <div class="logo">
+                                <img src="{{ logo.getCarouselLogo() }}" alt="{{ logo.name }}" />                  
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %} {# two rows #}
+            <div id="{{ __SELF__.id }}-t" class="list-logos">
+                <div class="carousel-logos-container">
+                    <div class="wrapper"> 
+                        {% for i, logo in logos|slice(0,logos|length//2) %}
+                            {% if logo.image %}
+                            <div class="logo">
+                                <img src="{{ logo.getCarouselLogo() }}" alt="{{ logo.name }}" />                  
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="{{ __SELF__.id }}-b" class="list-logos" style="margin-left:30px">
+                <div class="carousel-logos-container">
+                    <div class="wrapper">
+                        {% for i, logo in logos|slice((logos|length//2)+1, logos|length) %}
+                            {% if logo.image %}
+                            <div class="logo">
+                                <img src="{{ logo.getCarouselLogo() }}" alt="{{ logo.name }}" />                  
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% put script %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                new LogoSlider('{{ __SELF__.id }}-t');
+                {% if logos|length > 10 %}
+                new LogoSlider('{{ __SELF__.id }}-b');
+                {% endif %}
+            });
+        </script>
+    {% endput %}
+{% endif %}

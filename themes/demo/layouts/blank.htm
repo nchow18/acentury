@@ -1,0 +1,26 @@
+description = "Blank"
+
+[staticPage]
+useContent = 1
+default = 1
+
+[cookieBanner]
+include_css = 0
+update_partial = "site/gdpr"
+update_selector = "#gdpr-reload"
+
+[regionPicker]
+==
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% partial 'site/head' %}
+    </head>
+    <body>      
+        {% partial 'site/noscript' %}        
+        <div class="grid-y y-100 layout-default">
+            {% page %}
+        </div>        
+        {% partial 'site/scripts' %}        
+    </body>
+</html>

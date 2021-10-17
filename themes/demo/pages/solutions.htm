@@ -1,0 +1,39 @@
+title = "Solutions"
+url = "/solutions"
+layout = "default"
+is_hidden = 0
+
+[banner]
+slide = 65
+
+[banner banner2]
+slide = 66
+
+[threeCols]
+carousel = 23
+filterRegion = 0
+centerTitle = 0
+centerCTA = 0
+
+[banner banner3]
+slide = 70
+
+[threeCols threeCols2]
+carousel = 24
+filterRegion = 0
+centerTitle = 0
+centerCTA = 0
+==
+{% component 'banner2' %}
+
+<div class="grid-container" style="position:relative;top:-50px;">
+{% component 'threeCols' %}
+</div>
+<div style="position:relative;top:-100px;">
+{% component 'banner3' %}
+
+<div class="grid-container" style="position:relative;top:-100px;">
+{% component 'threeCols2' %}
+</div></div>
+<div style="position:relative;top:-150px;">
+{% partial 'blocks/contact-us' %}</div>

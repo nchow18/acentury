@@ -1,0 +1,45 @@
+description = "News Blog Post"
+
+[viewBag]
+
+[blogPosts blogPostNav]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "careers"
+postPage = "news-post"
+==
+{% set post = __SELF__.post %}
+{% partial 'blocks/post-hero' post = post show_cat = 0 %}
+
+ <div id="layout-content">
+     <div class="grid-container pb4 page-container post">
+         <div class="page-content">
+             {% partial 'blocks/post-featured-image' %}
+             <div class="grid-x grid-margin-x">
+                 <div class="cell small-12 large-9">
+                     {{ post.content_html|raw }}
+                     <div class="grid-x grid-margin-x align-justify mt4 pt4">
+                         <div class="cell small-4">
+                             <a href="{{ __SELF__.previousPost.url }}"><i class="fas fa-arrow-left"> </i>&nbsp;Previous</a>
+                         </div>
+                         <div class="cell small-4">
+                             <a href="{{ 'news'|page }}">Back to News Listing</a>
+                         </div>
+                         <div class="cell small-4">
+                             <a href="{{ __SELF__.nextPost.url }}">Next <i class="fas fa-arrow-right"></i></a>
+                         </div>            
+                     </div>                     
+                 </div>                 
+                 <div class="cell small-12 large-3 show-for-large pl1">
+                     <nav>
+                         <h5 class="pb1">More News</h6>
+                         {% component 'blogPostNav' %}
+                    </nav>
+                 </div>
+             </div>            
+         </div>
+     </div>
+ </div>

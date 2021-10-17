@@ -1,0 +1,19 @@
+{% if __SELF__.team %}
+<section class="block-team">
+    <div class="grid-x grid-margin-x grid-margin-y small-up-2 medium-up-3 xlarge-up-4 align-stretch">
+            {% for i, member in __SELF__.team %}
+                <div class="cell">
+                    {% if member.image %}
+                    <figure>
+                        <img src="{{ member.image.getThumb(280, 280, 'fit') }}" alt="{{ member.name }}" />                  
+                    </figure>
+                    {% endif %}
+                    <div class="wrapper">
+                        <div class="name">{{ member.name }}</div>
+                        <div class="position">{{ member.title}}</div>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+</section>
+{% endif %}

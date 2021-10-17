@@ -1,0 +1,9 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+title: Reorder Team Members
+modelClass: Ittoo\Carousel\Models\Team
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

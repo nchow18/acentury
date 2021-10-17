@@ -1,0 +1,196 @@
+name: 'Main Menu'
+items:
+    -
+        title: About<br>Us
+        nesting: null
+        type: cms-page
+        url: null
+        code: ''
+        reference: company
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: News
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: news
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'About the Company'
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: company
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Meet the Team'
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: team
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Careers
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: careers
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Our<br>Solutions
+        type: cms-page
+        code: ''
+        reference: solutions
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Wireless Test and Measurement'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: test-and-measurement
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Products for Wireless Labs'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: network-components
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Wireline Test and Measurement'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: test-and-measurement-wireline
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Fiber Cable Solutions'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: fiber-cable-solutions
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Our<br>Products
+        nesting: null
+        type: cms-page
+        url: null
+        code: ''
+        reference: network-components
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Passive Network Components'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: network-components
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Software for Wireless Labs'
+                nesting: null
+                type: cms-page
+                url: null
+                code: ''
+                reference: acentury-branded-test-products
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: 'Blog and <br>Resources'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: use-cases
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Contact Us'
+        nesting: null
+        type: cms-page
+        url: null
+        code: ''
+        reference: contact-us
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: '-button'
+            isExternal: '0'

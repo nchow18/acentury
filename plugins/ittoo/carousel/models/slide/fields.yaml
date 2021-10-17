@@ -1,0 +1,117 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    enabled:
+        label: Enable
+        default: true
+        type: switch      
+        span: left
+    carousel:
+        label: Category
+        nameFrom: name
+        descriptionFrom: description
+        span: left
+        required: 1
+        type: relation
+    tags:
+        label: Select Region
+        type: relation      
+        span: left        
+        
+        
+    layout_section:
+        label: Layout
+        type: section
+    valign:
+        label: Vertical Alignment for Alt. Sections
+        type: dropdown      
+        span: left
+        default: 0
+        options:
+            1: Top
+            0: Middle
+            2: Bottom 
+    vspacing:
+        label: Vertical Spacing
+        type: dropdown      
+        span: right
+        default: 0
+        options:
+            0: Top and Bottom
+            1: Top only
+            2: Bottom only
+
+    image_section:
+        label: Image
+        type: section
+    image:
+        label: Image 
+        mode: image
+        imageWidth: 320
+        useCaption: true
+        thumbOptions:
+            mode: fit
+            extension: auto
+        span: left
+        required: 0
+        type: fileupload
+    darken_bg:
+        label: Darken Image
+        span: right
+        type: switch
+    bgcolor:
+        label: Background Color
+        span: right
+        type: colorpicker
+        availableColors: ['#000000', '#ffffff']
+    image_carousel:
+        label: Image carousel
+        nameFrom: name
+        descriptionFrom: description
+        span: right
+        type: relation
+        emptyOption: -- select --
+        commentAbove: Replace image by carousel in Alternative Sections
+
+    content_section:
+        label: Content
+        type: section
+
+    caption:
+        label: Title
+        span: storm
+        cssClass: col-sm-12
+        type: text
+    subtitle:
+        label: Subtitle
+        span: storm
+        cssClass: col-sm-6
+        type: text
+    tagline:
+        label: Tagline
+        span: storm
+        cssClass: col-sm-6
+        type: text
+    but_link:
+        label: Link
+        span: storm
+        cssClass: col-sm-6
+        type: text
+    but_name:
+        label: Button Name
+        span: storm
+        cssClass: col-sm-3
+        type: text
+    link_whole:
+        label: Apply link to the whole slide
+        default: false
+        type: switch      
+        span: storm
+        cssClass: col-sm-3
+    description:        
+        label: Description
+        span: full
+        type: richeditor
+        mode: split

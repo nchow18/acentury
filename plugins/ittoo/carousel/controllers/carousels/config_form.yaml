@@ -1,0 +1,27 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Category
+
+# Model Form Field configuration
+form: $/ittoo/carousel/models/carousel/fields.yaml
+
+# Model Class name
+modelClass: Ittoo\Carousel\Models\Carousel
+
+# Default redirect location
+defaultRedirect: ittoo/carousel/carousels
+
+# Create page
+create:
+    title: Create Category
+    redirect: ittoo/carousel/carousels/update/:id
+    redirectClose: ittoo/carousel/carousels
+
+# Update page
+update:
+    title: Edit Category
+    redirect: ittoo/carousel/carousels
+    redirectClose: ittoo/carousel/carousels

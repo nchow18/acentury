@@ -1,0 +1,52 @@
+title = "Contact Us and Support Page"
+url = "/contact"
+layout = "with-banner-overlapped-full-width"
+meta_title = "Contact Us and Support Page"
+meta_description = "If you have any questions or concerns, we're here to help. Check this page for all our communication channels and select the best way to contact us."
+is_hidden = 0
+
+[emptyForm contactForm]
+messages_success = "Your form was successfully submitted."
+messages_errors = "There were errors with your submission."
+mail_enabled = 1
+mail_subject = "acentury.ca Contact Form Submission"
+mail_recipients[] = "carmen.lee@dreamstudio9.com"
+mail_replyto = "email"
+mail_template = "contactForm/notification.htm"
+mail_resp_enabled = 0
+reset_form = 1
+inline_errors = "disabled"
+js_on_success = "document.getElementById('contactFormWrapper').style.display='none';"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+skip_database = 1
+
+[banner]
+slide = 17
+
+[regionPosts blogPostsBlock]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = 4
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news"
+postPage = "news-post"
+==
+<div class="grid-container page-container">
+    <div class="page-content">
+        {% content 'contact/content' %}
+        <div class="grid-x grid-margin-x grid-margin-y align-center align-stretch mt2">
+            <div class="cell small-12 medium-6 contact small-order-2 medium-order-1 map-richmond-hill">
+                <a href="https://goo.gl/maps/P14PsJnT8XQtEdWF7"></a>
+            </div>
+            <div class="cell small-12 medium-6 contact small-order-1 medium-order-2">
+                {% content 'contact/office-toronto.htm' %}
+            </div>
+        </div>        
+    </div>
+</div>
+{% component 'blogPostsBlock' %}

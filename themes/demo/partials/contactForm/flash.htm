@@ -1,0 +1,32 @@
+{% spaceless %}
+    {% if type == 'danger' %}
+        {% set class = 'alert' %}
+    {% else %}
+        {% set class = type %}
+    {% endif %}
+    
+    <div class="callout {{ class }}" role="alert">
+
+    {% if title %}
+        <h4>{{ title }}</h4>
+    {% endif %}
+
+    {% if content %}
+        <p>{{ content }}</p>
+    {% endif %}
+
+    {% if list %}
+        <ul>
+        {% for item in list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    </div>
+
+{% if jscript %}
+    <script>{{ jscript|raw }}</script>
+{% endif %}
+
+{% endspaceless %}

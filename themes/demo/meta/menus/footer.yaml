@@ -1,0 +1,268 @@
+name: 'Footer Menu'
+items:
+    -
+        title: Products
+        type: header
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Passive Network Components'
+                type: cms-page
+                code: ''
+                reference: network-components
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Software for Wireless Labs'
+                type: cms-page
+                code: ''
+                reference: acentury-branded-test-products
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Solutions
+        nesting: null
+        type: header
+        url: null
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Wireless Test and Measurement'
+                type: cms-page
+                code: ''
+                reference: test-and-measurement
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Wireline Test and Measurement'
+                type: cms-page
+                code: ''
+                reference: test-and-measurement-wireline
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Fiber Cable Solutions'
+                type: cms-page
+                code: ''
+                reference: fiber-cable-solutions
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: 'Blog & Resources'
+        nesting: null
+        type: header
+        url: null
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Use Case'
+                nesting: '0'
+                type: blog-category
+                url: null
+                code: ''
+                reference: '4'
+                cmsPage: use-case-post
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Products Update'
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '3'
+                cmsPage: use-cases
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Partner News'
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '6'
+                cmsPage: use-cases
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Educational
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '5'
+                cmsPage: use-cases
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Company
+        nesting: ''
+        type: header
+        url: ''
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Contact
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: contact-us
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: About
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: company
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Team
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: team
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Careers
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: careers
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: News
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: news
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Legal
+        nesting: ''
+        type: header
+        url: ''
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Privacy Policy'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: privacy
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Terms of Use'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: terms-of-use
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Cookies Policy'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: cookies-policy
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'

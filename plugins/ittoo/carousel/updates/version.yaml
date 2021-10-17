@@ -1,0 +1,33 @@
+1.0.1: 
+    - Initialize plugin.
+    - create_carousel_carousels.php
+    - create_carousel_slides.php
+1.0.2:
+    - create_carousel_logos.php
+1.0.3:
+    - add_field_to_blog_post.php
+1.0.4:
+    - create_team.php
+1.0.5:
+    - create_blog_tags.php
+1.0.6:
+    - add_category_to_logos.php
+1.0.8:
+    - add_region_to_slide.php
+1.0.9:
+    - add_tagline_to_slide.php
+1.0.10:
+    - add_bgcolor_to_slide.php
+1.0.11:
+    - add_enabled_to_slide.php
+1.0.12:
+    - add_image_relation_to_slide.php
+1.0.13:
+    - add_link_whole_to_slide.php
+1.0.14:
+    - add_subtitle_to_slide.php
+1.0.15:
+    - add_verticalAlign_to_slide.php
+1.0.16:
+    - add_spacing_to_slide.php
+    

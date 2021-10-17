@@ -1,0 +1,27 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Team Member
+
+# Model Form Field configuration
+form: $/ittoo/carousel/models/team/fields.yaml
+
+# Model Class name
+modelClass: Ittoo\Carousel\Models\Team
+
+# Default redirect location
+defaultRedirect: ittoo/carousel/team
+
+# Create page
+create:
+    title: Create Team Member
+    redirect: ittoo/carousel/team/update/:id
+    redirectClose: ittoo/carousel/team
+
+# Update page
+update:
+    title: Edit Team Member
+    redirect: ittoo/carousel/team
+    redirectClose: ittoo/carousel/team

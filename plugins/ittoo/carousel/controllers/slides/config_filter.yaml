@@ -1,0 +1,19 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    carousel:
+
+        # Filter name
+        label: Category
+
+        # Model Class name
+        modelClass: Ittoo\Carousel\Models\Carousel
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # Apply query scope
+        scope: FilterCarousel

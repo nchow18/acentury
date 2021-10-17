@@ -1,0 +1,36 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    thumb:
+        label: Thumbnail
+        type: partial
+        relation: image
+        searchable: false
+        sortable: false
+        path: ~/plugins/ittoo/carousel/models/team/_thumb_column.htm
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    sort_order:
+        label: Sort Order
+        sortable: true
+    created_at:
+        label: Created At
+        type: datetime
+        sortable: true
+        format: Y-m-d H:i:s        
+    updated_at:
+        label: Updated At
+        type: datetime
+        sortable: true
+        format: Y-m-d H:i:s                
+        

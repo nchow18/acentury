@@ -1,0 +1,27 @@
+description = "Blog post banner"
+
+[viewBag]
+==
+<div class="hero dark">
+    <div class="hero-bg"></div>
+    <div class="grid-container">
+        <div class="hero-content">
+            <h1 class="page-title">{{ post.title }}</h1>
+            <p class="post-date">
+                {{ post.published_at|date('M j, Y') }} / 
+                
+                {% if show_cat == 1 %}
+                    {% for category in post.categories %}
+                        <a href="{{ category.url }}">{{ category.name }}</a> / 
+                    {% endfor %}
+                {% else %}
+                    <a href="{{ 'news'|page }}">{{ category.name }}</a> / 
+                {% endif %}
+            </p>
+            <p>
+                <a href="{{ post.previousPost.url }}" title="previous" class="pr2"><i class="fas fa-arrow-left"> </i></a>
+                <a href="{{ __SELF__.nextPost.url }}" title="next"><i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+    </div>
+</div>

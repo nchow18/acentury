@@ -1,0 +1,38 @@
+description = "Page header"
+
+[viewBag]
+
+[staticMenu menuMain]
+code = "main"
+==
+{% partial 'site/region-switcher' %}
+<header class="cell shrink page-header">
+    <div class="grid-container grid-x align-middle">
+        <h1 class="cell logo">            
+            <a href="{{ url('/') }}">
+                {% if this.theme.site_logo is empty %}
+                    <img src="/storage/app/media/blog/Acentury-logo-finalized.svg" alt="{{ this.theme.site_name }}">
+                {% else %}
+                    <img src="{{ this.theme.site_logo|media }}" alt="{{ this.theme.site_name }}">
+                {% endif %}
+                <span class="hide">{{ this.theme.site_name }}</span>
+            </a>
+        </h1>
+        <div class="cell auto">
+            <nav class="top-bar" id="main-nav" data-toggler aria-expanded="false" data-animate="slide-in-right slide-out-right">
+                <div class="hide-for-large header">
+                    <button type="button" class="button white hamburger" data-toggle="main-nav" aria-controls="main-nav">
+                        <i class="ic-hamburger close" aria-hidden="true"><span></span></i><span class="show-for-sr">Menu</span>
+                    </button>
+                </div>
+                <h5 class="hide">Main Menu</h5>
+                <div class="top-bar-left">
+                {% component 'menuMain' %}
+                </div>
+            </nav>
+        </div>       
+    </div>
+    <button type="button" class="hide-for-large hamburger" data-toggle="main-nav" aria-controls="main-nav">
+        <i class="hide-for-large fas fa-bars fa-2x" aria-hidden="true"></i><span class="show-for-sr">Toggle Menu</span>
+    </button>                        
+</header>

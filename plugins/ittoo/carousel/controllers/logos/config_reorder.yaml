@@ -1,0 +1,9 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+title: Reorder Logos
+modelClass: Ittoo\Carousel\Models\Logo
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

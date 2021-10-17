@@ -1,0 +1,32 @@
+[viewBag]
+==
+<div class="block-posts">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y align-stretch posts">
+            {% set posts = __SELF__.posts %}
+            
+            {% for post in posts %}
+                <div class="cell small-12 medium-6 large-3 post">
+                    {% for image in post.featured_images|slice(0, 1) %}
+                        <figure>
+                            <img src="{{image.thumb(500, null, 'fit')}}" alt="">
+                            {% for category in post.categories|slice(0, 1) %}
+                                <div class="label">{{ category.name }}</div>
+                            {% endfor %}
+                        </figure>                
+                    {% endfor %}
+            
+                    <div class="inner">
+                        <a href="{{ post.url }}"></a>
+                        <h6>{{ post.title }}</h6>
+            
+                        <div class="excerpt">{{ post.summary|raw }}</div>
+                        <div class="bottom">
+                            <span class="post-date">{{ post.published_at|date('M j, Y') }} <i class="more fas fa-arrow-right fa-lg"></i></span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}        
+        </div>
+    </div>
+</div>

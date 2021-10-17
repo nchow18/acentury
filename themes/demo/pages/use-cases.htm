@@ -1,0 +1,72 @@
+title = "Blog"
+url = "/use-cases/:slug?all/:page?"
+layout = "with-banner-overlapped-full-width"
+is_hidden = 0
+
+[regionPosts blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 12
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+exceptCategories = "uncategorized"
+
+[banner]
+slide = 16
+
+[blogCategories blogFilter]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "use-cases"
+
+[blogPosts blogPostNav2]
+pageNumber = 1
+categoryFilter = "{{ :slug }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+exceptCategories = "uncategorized"
+
+[regionPosts blogPostNav]
+pageNumber = 1
+categoryFilter = "{{ :slug }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+exceptCategories = "uncategorized"
+==
+<?php
+function onEnd()
+{
+    if ($this->category)
+       $this->page->title = $this->category->name;
+}
+?>
+==
+<div class="page-content">
+    {% content 'use-cases/content.htm' %}
+    <div class="grid-x grid-margin-x grid-margin-y page-posts">
+        <div class="cell small-12 large-3 xlarge-2">
+            {% component 'blogFilter' %}    
+            <div class="show-for-large ml0 mt4">
+                {% component 'blogPostNav' %} 
+            </div>
+        </div>
+        <div class="cell small-12 large-9 xlarge-10">
+            {% partial 'site/mailchimp-signup-footer' %}
+            <br><br>
+            {% component 'blogPosts' %}
+        </div>
+    </div>
+</div>
+<div class="grid-container">
+    <div class="text-center mt4 pb4">
+        {% content 'test-and-measurement/footer' %}
+    </div>
+</div>

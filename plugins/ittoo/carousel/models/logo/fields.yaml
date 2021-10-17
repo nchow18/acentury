@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    carousel:
+        label: Category
+        nameFrom: name
+        span: left
+        required: 1
+        type: relation
+    name:
+        label: Name
+        span: left
+        required: 1
+        type: text
+    image:
+        label: Image 
+        mode: image
+        imageWidth: 140
+        useCaption: true
+        thumbOptions:
+            mode: fit
+            extension: auto
+        span: full
+        required: 1
+        type: fileupload
+        commentAbove: Carousel logos will be resized to 50px in height

@@ -1,0 +1,59 @@
+[viewBag]
+==
+<?php
+function onStart()
+{
+    $this->addCss('assets/css/acentury.css?7');
+}
+?>
+==
+{% set baseurl = url('/') ~ '/' %}
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>{{ this.page.title }} | {{ this.theme.site_name }}</title>
+
+<meta name="description" content="{{ this.page.meta_description }}">
+<meta name="title" content="{{ this.page.meta_title }}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ baseurl }}storage/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ baseurl }}storage/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ baseurl }}storage/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ baseurl }}storage/favicon/favicon-16x16.png">
+<link rel="manifest" href="{{ baseurl }}storage/favicon/site.webmanifest">
+<link rel="mask-icon" href="{{ baseurl }}storage/favicon/safari-pinned-tab.svg" color="#004a66">
+<link rel="shortcut icon" href="{{ baseurl }}storage/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#f4f4f4">
+<meta name="msapplication-config" content="{{ baseurl }}favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:locale" content="en_CA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ this.page.title }} | {{ this.theme.site_name }}">
+<meta property="og:description" content="{{ this.page.meta_description }}">
+<meta property="og:url" content="{{ url_current() }}">
+<meta property="og:site_name" content="{{ this.theme.site_name }}">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="{{ this.page.meta_description }}">
+<meta name="twitter:title" content="{{ this.page.title }} | {{ this.theme.site_name }} ">
+<meta name="twitter:site" content="acentury2">
+
+<meta name="google" content="notranslate">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106624174-4"></script>
+<script id="gdpr-reload"></script>
+{% if gdprCookieAllowed('acentury') %}
+    <script>
+    {% partial 'site/gdpr' %}
+    </script>
+{% endif %}
+
+<script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"Organization","url":"{{ baseurl }}","sameAs":[],"@id":"{{ baseurl }}/#organization","name":"{{ this.theme.site_name }}",
+    "logo":"{{ baseurl }}/storage/favicon/logo.png"}</script>        
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+{% styles %}

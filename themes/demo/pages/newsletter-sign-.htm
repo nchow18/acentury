@@ -1,0 +1,21 @@
+title = "Newsletter Sign-up"
+url = "/newsletter-signup-k"
+layout = "default"
+is_hidden = 0
+==
+<?php
+function onStart()
+{
+    $this['ito_popup'] = false;
+}
+?>
+==
+<section class="section grid-container page-container">
+    <div class="page-content">
+        <div style="max-width: 800px;">
+            {% partial 'site/mailchimp-signup-k.htm' %}
+        </div>
+    </div>
+</section>
+ 
+ {% component 'blogPostsBlock' %}

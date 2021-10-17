@@ -1,0 +1,32 @@
+{# altSection #}
+{% if __SELF__.carousel and __SELF__.carousel.slides %}
+    <div class="l-pad pt2 pb2 section-3col">
+        <div class="grid-x grid-margin-x grid-margin-y align-stretch">
+            {% for i, slide in __SELF__.carousel.slides %}
+                <div class="cell small-12 medium-4 relative"{% if slide.bgcolor %} style="background-color:{{ slide.bgcolor }}"{% endif %}>
+                    {% if slide.image %}
+                    <figure>
+                        <img src="{{slide.image.thumb(500, null, 'fit')}}" alt="">
+                    </figure>           
+                    {% endif %}
+                    <div class="pad">
+
+                        <h5{% if __SELF__.property('centerTitle') %} class="text-center"{% endif %}>{{ slide.caption|raw }}</h5>
+                        {% if slide.tagline %}
+                            <div class="h5">{{ slide.tagline|raw }}</div>
+                        {% endif %}        
+                        <div class="h6">
+                            {{ slide.description|raw }}
+                            {% if slide.but_link and slide.but_name %}
+                                <p{% if __SELF__.property('centerCTA') %} class="text-center"{% endif %}><a class="button" href="{{ slide.but_link }}">{{ slide.but_name }}</a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if slide.but_link and slide.link_whole %}
+                        <a class="link-overlay" href="{{ slide.but_link }}"></a>
+                    {% endif %}
+                </div>            
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

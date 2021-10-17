@@ -1,0 +1,27 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Slides
+
+# Model Form Field configuration
+form: $/ittoo/carousel/models/slide/fields.yaml
+
+# Model Class name
+modelClass: Ittoo\Carousel\Models\Slide
+
+# Default redirect location
+defaultRedirect: ittoo/carousel/slides
+
+# Create page
+create:
+    title: Create Slide
+    redirect: ittoo/carousel/slides/update/:id
+    redirectClose: ittoo/carousel/slides
+
+# Update page
+update:
+    title: Edit Slide
+    redirect: ittoo/carousel/slides
+    redirectClose: ittoo/carousel/slides

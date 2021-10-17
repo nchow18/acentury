@@ -1,0 +1,13 @@
+[viewBag]
+==
+<div class="grid-x grid-margin-x grid-margin-y align-justify align-middle">
+    <div class="cell auto">
+        {% partial __SELF__ ~ '::message' %}
+    </div>
+    <div class="cell small-12 medium-4 nowrap">
+        {% partial __SELF__ ~ '::settings' %}
+        {# {% partial __SELF__ ~ '::optout' %} #}
+        {% partial __SELF__ ~ '::optin' %}
+        {% partial __SELF__ ~ '::dismiss' %}
+    </div>    
+</div>

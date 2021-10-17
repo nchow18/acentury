@@ -1,0 +1,9 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+title: Reorder Slides
+modelClass: Ittoo\Carousel\Models\Slide
+nameFrom: caption
+toolbar:
+    buttons: reorder_toolbar

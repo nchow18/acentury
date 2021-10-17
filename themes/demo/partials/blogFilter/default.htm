@@ -1,0 +1,17 @@
+[viewBag]
+==
+<nav>
+    <h6 class="show-for-large">Categories</h6>
+{% if __SELF__.categories|length > 0 %}
+
+    <ul id="blog-filter" class="blog-filter">
+        <li>
+            <a href="{{ 'use-cases'|page({'cat':'all'}) }}">All</a> 
+        </li>
+        {% partial __SELF__ ~ "::items"
+            categories = __SELF__.categories
+            currentCategorySlug = __SELF__.currentCategorySlug
+        %}
+    </ul>
+{% endif %}
+</nav>

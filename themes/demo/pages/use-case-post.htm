@@ -1,0 +1,29 @@
+title = "Use Cases - Post"
+url = "/use-cases/b/:slug/:cat?"
+layout = "blog-post"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "use-cases"
+
+[blogPosts blogPostNav]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :cat }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "use-cases"
+postPage = "use-case-post"
+==
+<?php
+function onEnd()
+{
+    if ($this->post) {
+       $this->page->title = $this->post->title;
+       $this->page->meta_description = $this->post->excerpt;
+    }
+}
+?>
+==
+{% component 'blogPost' %}

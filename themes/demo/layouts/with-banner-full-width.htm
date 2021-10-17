@@ -1,0 +1,28 @@
+description = "Full Width Page with Banner"
+
+[cookieBanner]
+include_css = 0
+update_partial = "site/gdpr"
+update_selector = "#gdpr-reload"
+
+[regionPicker]
+==
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        {% partial 'site/head' %}
+    </head>
+    <body>
+        {% partial 'site/noscript' %}        
+        <div class="grid-y y-100 layout-default">
+            {% partial 'site/header' %}
+            {% partial 'site/hero' %}
+            <div id="layout-content" class="page-container">
+                {% page %}
+            </div>
+            {% partial 'site/footer' %}
+        </div>
+        {% partial 'site/popup-mailchimp' %}
+        {% partial 'site/scripts' %}
+    </body>
+</html>
