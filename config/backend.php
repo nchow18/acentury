@@ -105,6 +105,6 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'UTC-05:00',
 
 ];
