@@ -1,25 +1,49 @@
 description = "Page footer"
 
-[viewBag]
-
 [staticMenu menuFooter]
 code = "footer"
 
 [regionSwitcher]
+
+[staticMenu menuLegal]
+code = "legal"
+
+[staticMenu menuLegalV]
+code = "legal"
 ==
-<footer class="page-footer">
+<footer class="page-footer footer-menu-font">
     <div class="footer-menu">
         <div class="grid-container">
             {% component 'menuFooter' %}
         </div>
+        <div class="grid-container">
+          {% partial 'site/mailchimp-signup-footer' %}
+          {% content 'footer/social-media' %}
+        </div>
+
     </div>
-    <div class="legal">
-        {% partial 'site/mailchimp-signup-footer' %}
-        {% content 'footer/social-media' %}
-        {% component 'regionSwitcher' %}
+
+
+    <div class="legal hide-for-large">
+        <div class="grid-x grid-padding-x">
+            <div class="cell small-6">
+                {% component 'menuLegalV' %}
+            </div>
+            <div class="cell small-6">
+                {% component 'regionSwitcher' %}
+                </div>
+        </div>
     </div>
     <div class="copyright">
-        &copy; {{ "now"|date("Y") }} {{ this.theme.site_name }}. All rights reserved.
+        <div class="grid-x grid-padding-x">
+            <div class="cell small-12 medium-6">
+                &copy; {{ "now"|date("Y") }} {{ this.theme.site_name }}. All rights reserved.
+            </div>
+            <div class="cell small-12 medium-6 show-for-medium">
+                {% component 'menuLegal' %}
+            </div>
+        </div>
+        
     </div>  
 </footer>
 {% partial 'blocks/cookie-banner' %}

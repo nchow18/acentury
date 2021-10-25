@@ -1,25 +1,14 @@
 name: Legal
 items:
     -
-        title: 'Cookies Policy'
-        nesting: '0'
+        title: 'Privacy & Cookie Policy'
+        nesting: 0
         type: static-page
-        url: ''
-        code: ''
-        reference: cookies-policy
-        cmsPage: ''
-        replace: '0'
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-    -
-        title: Privacy
-        nesting: '0'
-        type: static-page
+        url: null
         code: ''
         reference: privacy
-        replace: '0'
+        cmsPage: null
+        replace: 0
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -28,8 +17,10 @@ items:
         title: Terms
         nesting: '0'
         type: static-page
+        url: null
         code: ''
         reference: terms-of-use
+        cmsPage: null
         replace: '0'
         viewBag:
             isHidden: '0'

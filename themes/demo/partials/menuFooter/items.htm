@@ -9,7 +9,7 @@
         {% endif %}
 
         {% if item.items %}
-            <ul class="vertical menu js-dropdown-active nested">{% partial __SELF__ ~ "::items" items=item.items %}</ul>
+            <ul class="vertical menu js-dropdown-active nested footer-menu-font">{% partial __SELF__ ~ "::items" items=item.items %}</ul>
         {% endif %}
     </li>
 {% endfor %}

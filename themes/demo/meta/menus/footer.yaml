@@ -2,8 +2,13 @@ name: 'Footer Menu'
 items:
     -
         title: Products
+        nesting: null
         type: header
+        url: null
         code: ''
+        reference: null
+        cmsPage: null
+        replace: null
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -11,18 +16,26 @@ items:
         items:
             -
                 title: 'Passive Network Components'
+                nesting: null
                 type: cms-page
+                url: null
                 code: ''
                 reference: network-components
+                cmsPage: null
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
                 title: 'Software for Wireless Labs'
+                nesting: null
                 type: cms-page
+                url: null
                 code: ''
                 reference: acentury-branded-test-products
+                cmsPage: null
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
@@ -43,93 +56,39 @@ items:
         items:
             -
                 title: 'Wireless Test and Measurement'
+                nesting: null
                 type: cms-page
+                url: null
                 code: ''
                 reference: test-and-measurement
+                cmsPage: null
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
                 title: 'Wireline Test and Measurement'
+                nesting: null
                 type: cms-page
+                url: null
                 code: ''
                 reference: test-and-measurement-wireline
+                cmsPage: null
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
             -
                 title: 'Fiber Cable Solutions'
+                nesting: null
                 type: cms-page
-                code: ''
-                reference: fiber-cable-solutions
-                viewBag:
-                    isHidden: '0'
-                    cssClass: ''
-                    isExternal: '0'
-    -
-        title: 'Blog & Resources'
-        nesting: null
-        type: header
-        url: null
-        code: ''
-        reference: null
-        cmsPage: null
-        replace: null
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-        items:
-            -
-                title: 'Use Case'
-                nesting: '0'
-                type: blog-category
                 url: null
                 code: ''
-                reference: '4'
-                cmsPage: use-case-post
-                replace: '0'
-                viewBag:
-                    isHidden: '0'
-                    cssClass: ''
-                    isExternal: '0'
-            -
-                title: 'Products Update'
-                nesting: '0'
-                type: blog-category
-                url: ''
-                code: ''
-                reference: '3'
-                cmsPage: use-cases
-                replace: '0'
-                viewBag:
-                    isHidden: '0'
-                    cssClass: ''
-                    isExternal: '0'
-            -
-                title: 'Partner News'
-                nesting: '0'
-                type: blog-category
-                url: ''
-                code: ''
-                reference: '6'
-                cmsPage: use-cases
-                replace: '0'
-                viewBag:
-                    isHidden: '0'
-                    cssClass: ''
-                    isExternal: '0'
-            -
-                title: Educational
-                nesting: '0'
-                type: blog-category
-                url: ''
-                code: ''
-                reference: '5'
-                cmsPage: use-cases
-                replace: '0'
+                reference: fiber-cable-solutions
+                cmsPage: null
+                replace: null
                 viewBag:
                     isHidden: '0'
                     cssClass: ''
@@ -261,6 +220,67 @@ items:
                 code: ''
                 reference: cookies-policy
                 cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: RESOURCES
+        type: header
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: col-title
+            isExternal: '0'
+        items:
+            -
+                title: 'Use Case'
+                nesting: '0'
+                type: blog-category
+                url: null
+                code: ''
+                reference: '4'
+                cmsPage: use-case-post
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Products Update'
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '3'
+                cmsPage: use-cases
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Partner News'
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '6'
+                cmsPage: use-cases
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Educational
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '5'
+                cmsPage: use-cases
                 replace: '0'
                 viewBag:
                     isHidden: '0'
