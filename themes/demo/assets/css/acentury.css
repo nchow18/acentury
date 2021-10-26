@@ -11,9 +11,77 @@
 
 .social-media-circle {
     background-color: #84C4FF;
-    border-radius: 50%;
-    padding: 6px;
     color: #131B48;
+}
+
+.footer-social-icons {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-social-icons > div {
+  margin-right: 1rem;
+  background-color: #84C4FF;
+  border-radius: 50%;
+  padding: 6px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-menu-flex {
+  background-color: #131B48;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-left-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: initial;
+  padding: 2rem;
+  margin-right: 6rem;
+}
+
+.footer-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
+
+.footer-background {
+  background-color: #131B48;
+}
+
+.footer-logo-container {
+  padding: 1rem 0;
+  margin: 0 0 2rem 0;
+  border-bottom: 2px solid #212e78
+}
+
+.footer-region {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 640px) {
+  .footer-menu {
+    flex-direction: column;
+  }
+
+  .footer-left-container {
+    align-items: center;
+    margin-right: 0;
+  }
+
+  .footer-social-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 

@@ -13,14 +13,15 @@ code = "legal"
 ==
 <footer class="page-footer footer-menu-font">
     <div class="footer-menu">
-        <div class="grid-container">
-            {% component 'menuFooter' %}
-        </div>
-        <div class="grid-container">
-          {% partial 'site/mailchimp-signup-footer' %}
-          {% content 'footer/social-media' %}
-        </div>
-
+      <div class="footer-left-container">
+        {% partial 'site/mailchimp-signup-footer' %}
+        {% content 'footer/logo' %}
+        {% content 'footer/social-media' %}
+        {% content 'footer/region' %}
+      </div>      
+      <div class="footer-menu-container">
+          {% component 'menuFooter' %}
+      </div>
     </div>
 
 
