@@ -60,8 +60,8 @@
 }
 
 .footer-logo {
-  background-image: url('../images/acentury_logo.jpg');
-  background-size: 80% 3rem;
+  background-image: url('../images/acentury_logo.png');
+  background-size: 15rem 3rem;
   background-repeat: no-repeat;
   height: 3rem;
 }
@@ -162,7 +162,7 @@
 
 
   .footer-logo {
-    background-image: url('../images/acentury_logo.jpg');
+    background-image: url('../images/acentury_logo.png');
     background-size: 15rem 3rem;
     background-repeat: no-repeat;
     height: 3rem;
