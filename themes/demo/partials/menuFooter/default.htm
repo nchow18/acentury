@@ -1,5 +1,5 @@
 {% if __SELF__.menuItems %}
-    <ul class="vertical medium-horizontal menu expanded dark-menu" data-responsive-menu="accordion medium-dropdown">
+    <div class="footer-right-container">
         {% partial __SELF__ ~ "::items" items=__SELF__.menuItems %}
-    </ul>
+    </div>
 {% endif %}
