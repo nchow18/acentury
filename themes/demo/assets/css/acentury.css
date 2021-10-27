@@ -123,30 +123,81 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 100%;
   text-transform: uppercase;
+  color: #FFFFFF;
 }
 
 .region-switcher .inline:nth-child(2) {
   border-bottom: 1px solid white;
+  height: 2rem;
+  margin-left: 1rem;
 }
 
 .region-switcher select {
   background-color: #131B48;
-  color: white;
+  color: #FFFFFF;
   border: none !important;
   height: 1.5rem !important;
   background-image: url('../images/white_down_arrow.png');
   background-position: calc(100% - 3px) right;
   background-size: 25px;
   background-repeat: no-repeat;
+  text-align-last: left;
+  padding-left: 0px;
 }
 
 .region-switcher select option {
   background-color: #131B48;
 }
 
+.uppercase-font {
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 640px) {
+
+  .footer-logo-container > * {
+    color: #CCCCCC !important;
+  }
+
+
+  .footer-logo {
+    background-image: url('../images/acentury_logo.jpg');
+    background-size: 15rem 3rem;
+    background-repeat: no-repeat;
+    height: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .region-switcher select {
+    color: #CCCCCC;
+  }
+
+  .region-switcher .inline:nth-child(2) {
+    margin-left: 0rem;
+  }
+
+  .region-switcher .inline {
+    color: #cccccc;
+  }
+
+  .region-switcher div {
+    color: #cccccc;
+  }
+
+  .ls-none ul li {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+
+  .ls-none ul li a {
+    color: #CCCCCC !important;
+  }
+
+  .ls-none ul li:hover {
+    color: white;
+  }
 
   .footer-logo-container {
     border-bottom: none;
@@ -189,6 +240,11 @@
   .footer-social-container {
     display: flex;
     flex-direction: row;
+    color: #CCCCCC;
+  }
+
+  .uppercase-font {
+    text-transform: none;
   }
 
   .footer-social-container > div:nth-child(1) {
@@ -197,6 +253,7 @@
     align-items: left;
     justify-content: left;
     padding-top: .25rem;
+
   }  
 
   .footer-social-icons {
